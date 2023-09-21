@@ -1,0 +1,78 @@
+/* Inclusive: 1 - 475px */
+@media screen and (max-width: 475px) {
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin-left: 16px;
+        margin-right: 16px;
+        font-family: Helvetica, sans-serif;
+    }
+
+    img {
+        width: 100%;
+        margin-top: 85px;
+    }
+
+    h1 {
+        font-size: 20pt;
+    }
+
+    .box {
+        padding: 15px 35px;
+        background-color: rgb(240, 240, 240);
+        /* Solution 1 */
+            position: relative;
+            top: -35px; 
+        /* Solution 2 */
+            /* position: absolute; */
+            /* top: 280px; */
+        margin-left: 16px;
+        height: 320px;
+    }
+
+    .lower-box {
+        padding: 15px 30px;
+        background-color: rgb(240, 240, 240);
+        margin-bottom: 32px;
+    }
+
+    .description {
+        font-size: 12pt;
+        line-height: 1.7;
+        color: rgb(80,80,80);
+    }
+
+    .caption {
+        font-weight: 900;
+        font-size: 12pt;
+        bottom: 20px;
+        letter-spacing: 0.5px;
+        color: rgb(80,80,80);
+        /* Solution 1 */
+            /* text-align: right; */
+        /* Solution 2 */
+            position: absolute;
+            right: 45px;
+    }
+
+    .citation {
+        font-size: 12pt;
+        color: rgb(80,80,80);
+        display: flex;
+        justify-content: right;
+        text-align: right;
+        line-height: 1.5;
+    }
+
+    .section-header {
+        font-size: 20pt;
+        color: rgb(45,45,45);
+    }
+}
+
+/* Inclusive: > 476px */
+@media screen and (min-width: 476px) {
+
+}
