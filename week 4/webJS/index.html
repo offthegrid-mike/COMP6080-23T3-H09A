@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calc() {
+            const num1_value = parseInt(document.getElementById("num-1").value);
+            const num2_value = parseInt(document.getElementById("num-2").value);
+            const result = num1_value + num2_value;
+            document.getElementById('result').innerText = result;
+        }
+
+        const onReset = () => {
+            document.getElementById('num-1').value = "";
+            document.getElementById('num-2').value = "";
+            document.getElementById('result').innerText = "";
+        };
+
+        const onSave = () => {
+            const saved_1 = document.getElementById("num-1").value;
+            const saved_2 = document.getElementById("num-2").value;
+            localStorage.setItem("num-1", saved_1);
+            localStorage.setItem("num-2", saved_2);
+        }
+
+        const onRestore = () => {
+            const saved_1 = localStorage.getItem("num-1");
+            const saved_2 = localStorage.getItem("num-2");
+            document.getElementById("num-1").value = saved_1;
+            document.getElementById("num-2").value = saved_2;
+            calc();
+        }
+
+    </script>
+</head>
+<body>
+    <section>
+        <p>Enter two numbers</p>
+        <div>
+            <input id="num-1" onblur="calc()"/>
+            <input id="num-2" onblur="calc()"/>
+        </div>
+        <button onclick="calc()">Calculate</button>
+        <button onclick="onReset()">Reset</button>
+        <button onclick="onSave()">Save</button>
+        <button onclick="onRestore()">Restore</button>
+        <div id="result"></div>
+    </section>
+</body>
+</html>
