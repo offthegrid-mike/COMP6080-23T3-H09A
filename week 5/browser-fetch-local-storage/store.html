@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+            #container {
+                width: 400px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .box {
+                width: 50%;
+            }
+        </style>
+        <title>Store.html</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            fetch("http://www.cse.unsw.edu.au/~cs6080/raw/data/package.json")
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('result', JSON.stringify(data))
+                renderPage(data);
+            })
+            .catch(err => {
+                if (localStorage.hasOwnProperty("result")) {
+                    const data = JSON.parse(localStorage.getItem("result"));
+                    renderPage(data);
+                    renderMessage("This data is not live.")
+                }
+            })
+
+            // data: JSON object
+            const renderPage = (data) => {
+                const createElement = (value) => {
+                    const newDOM = document.createElement('div');
+                    newDOM.classList.add("box");
+                    newDOM.innerText = value;
+                    document.body.appendChild(newDOM);
+                }
+
+                document.body.setAttribute("id", "container");
+                
+                createElement("name");
+                createElement(data.name);
+                createElement("reindeers");
+                createElement(data.reindeers);
+                createElement("primary");
+                createElement(data.primary);
+            }
+
+            const renderMessage = msg => {
+                const newDOM = document.createElement('div');
+                newDOM.innerText = msg;
+                document.body.appendChild(newDOM);
+            }
+
+        </script>
+    </body>
+</html>
